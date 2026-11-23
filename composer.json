@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "ext-json": "*",
+        "ext-mbstring": "*",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0"
     },
