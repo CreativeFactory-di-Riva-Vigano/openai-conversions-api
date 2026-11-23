@@ -1,0 +1,30 @@
+{
+    "name": "creativefactoryrv/openai-conversions-api",
+    "description": "Client PHP (PSR-18) per la Conversions API di OpenAI Ads: invio di eventi di conversione server-to-server.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["openai", "ads", "conversions-api", "capi", "tracking", "psr-18"],
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle": "^8.6",
+        "nyholm/psr7": "^1.8",
+        "phpunit/phpunit": "^10.5 || ^11.0",
+        "vlucas/phpdotenv": "^5.8"
+    },
+    "autoload": {
+        "psr-4": { "CreativeFactoryRV\\OpenAIConversions\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "CreativeFactoryRV\\OpenAIConversions\\Tests\\": "tests/" }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": { "test": "phpunit --testsuite default" },
+    "minimum-stability": "stable"
+}

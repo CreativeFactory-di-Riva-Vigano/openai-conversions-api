@@ -1,0 +1,9 @@
+/vendor/
+composer.lock
+.phpunit.cache/
+.phpunit.result.cache
+.idea/
+.DS_Store
+/examples/
+/Dockerfile
+/docker-compose.yml
