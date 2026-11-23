@@ -1,6 +1,6 @@
 # OpenAI Conversions API for PHP
 
-A lightweight PHP client (PSR-18 / PSR-17) for sending server-to-server conversion events to the
+A lightweight PHP client for sending server-to-server conversion events to the
 [OpenAI Ads Conversions API](https://developers.openai.com/ads/conversions-api).
 
 ## Installation
@@ -29,24 +29,27 @@ $client = new Client(
     streamFactory: $factory,
 );
 
+$user = UserData::create()
+    ->email('john@example.com') // Normalized and hashed automatically
+    ->ipAddress($_SERVER['REMOTE_ADDR'])
+    ->userAgent($_SERVER['HTTP_USER_AGENT'])
+    ->country('IT');
+
+if (isset($_COOKIE['__obref'])) {
+    $user->obref($_COOKIE['__obref']); // Pass the Pixel __obref cookie unchanged
+}
+
 $event = Event::create('order_created', id: 'order_12345')
     ->sourceUrl('https://shop.example.com/checkout/confirmation')
     ->amount(2599, 'EUR') // Minor units: 2599 = EUR 25.99
     ->addItem('sku_123', name: 'Starter bundle', quantity: 1, contentType: 'product')
-    ->user(
-        UserData::create()
-            ->email('mario.rossi@example.com') // Normalized and hashed automatically
-            ->ipAddress($_SERVER['REMOTE_ADDR'])
-            ->userAgent($_SERVER['HTTP_USER_AGENT'])
-            ->country('IT')
-    );
+    ->user($user);
 
 if (isset($_COOKIE['oppref'])) {
     $event->oppref($_COOKIE['oppref']); // Pass the captured value unchanged
 }
 
-$client->send($event, validateOnly: true); // Validate without saving
-$client->send($event);
+$client->send($event, validateOnly: true); // Validates events without saving them when `validateOnly` is true.
 ```
 
 Create a custom event with `Event::custom('quote_requested', 'quote_1')`, then add its source URL

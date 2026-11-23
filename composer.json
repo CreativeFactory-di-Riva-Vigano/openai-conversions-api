@@ -1,6 +1,6 @@
 {
     "name": "creativefactoryrv/openai-conversions-api",
-    "description": "Client PHP (PSR-18) per la Conversions API di OpenAI Ads: invio di eventi di conversione server-to-server.",
+    "description": "PHP client for the OpenAI Ads Conversions API: sending server-to-server conversion events.",
     "type": "library",
     "license": "MIT",
     "keywords": ["openai", "ads", "conversions-api", "capi", "tracking", "psr-18"],
